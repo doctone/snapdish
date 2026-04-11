@@ -2,8 +2,8 @@
   "name": "@snapdish/database",
   "private": true,
   "scripts": {
-    "db:start": "pnpm exec supabase start --workdir ./supabase",
-    "db:stop": "pnpm exec supabase stop --workdir ./supabase",
-    "db:reset": "pnpm exec supabase start --workdir ./supabase && pnpm exec supabase db reset --local --yes --workdir ./supabase"
+    "db:start": "pnpm exec supabase start",
+    "db:stop": "pnpm exec supabase stop",
+    "db:reset": "pnpm exec supabase db reset --local --yes"
   }
 }

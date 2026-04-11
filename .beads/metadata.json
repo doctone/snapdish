@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "snapdish",
+  "project_id": "2455e776-b847-4278-a2b0-626601b798f3"
+}

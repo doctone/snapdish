@@ -3,11 +3,13 @@
   "private": true,
   "main": "index.js",
   "type": "module",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "dev": "vite dev",
-    "db:start": "pnpm exec supabase start --workdir packages/database/supabase",
-    "db:stop": "pnpm exec supabase stop --workdir packages/database/supabase",
-    "db:reset": "pnpm exec supabase start --workdir packages/database/supabase && pnpm exec supabase db reset --local --yes --workdir packages/database/supabase",
+    "turbo": "turbo",
+    "db:start": "turbo run db:start --filter=@snapdish/database",
+    "db:stop": "turbo run db:stop --filter=@snapdish/database",
+    "db:reset": "turbo run db:reset --filter=@snapdish/database",
     "build": "vite build && tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
@@ -33,6 +35,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "supabase": "^2.89.1",
     "tailwindcss": "^4.2.2",
+    "turbo": "^2.9.6",
     "typescript": "^6.0.2",
     "vite": "^8.0.0"
   }

@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "db:start": "pnpm exec supabase start",
-    "db:stop": "pnpm exec supabase stop",
-    "db:reset": "pnpm exec supabase start && pnpm exec supabase db reset --local --yes",
+    "db:start": "pnpm exec supabase start --workdir packages/database/supabase",
+    "db:stop": "pnpm exec supabase stop --workdir packages/database/supabase",
+    "db:reset": "pnpm exec supabase start --workdir packages/database/supabase && pnpm exec supabase db reset --local --yes --workdir packages/database/supabase",
     "build": "vite build && tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "start": "pnpx srvx --prod -s ../client dist/server/server.js"
   },

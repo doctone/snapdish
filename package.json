@@ -12,7 +12,8 @@
     "build": "turbo run build --filter=@snapdish/web",
     "typecheck": "turbo run typecheck --filter=@snapdish/web",
     "preview": "turbo run preview --filter=@snapdish/web",
-    "start": "turbo run start --filter=@snapdish/web"
+    "start": "turbo run start --filter=@snapdish/web",
+    "deploy": "pnpm --filter=@snapdish/web run deploy"
   },
   "devDependencies": {
     "supabase": "^2.89.1",

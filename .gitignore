@@ -9,6 +9,7 @@ yarn.lock
 .env
 .vercel
 .output
+.wrangler
 /build/
 /api/
 /server/build
@@ -29,4 +30,4 @@ yarn.lock
 .dolt/
 *.db
 .beads-credential-key
- apps/web/dist
+apps/web/dist

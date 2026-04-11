@@ -7,6 +7,15 @@ settings:
 importers:
 
   .:
+    devDependencies:
+      supabase:
+        specifier: ^2.89.1
+        version: 2.89.1
+      turbo:
+        specifier: ^2.9.6
+        version: 2.9.6
+
+  apps/web:
     dependencies:
       '@supabase/ssr':
         specifier: ^0.5.2
@@ -45,21 +54,17 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.0.1
         version: 6.0.1(vite@8.0.8(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.6.1)(tsx@4.21.0))
-      supabase:
-        specifier: ^2.89.1
-        version: 2.89.1
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
-      turbo:
-        specifier: ^2.9.6
-        version: 2.9.6
       typescript:
         specifier: ^6.0.2
         version: 6.0.2
       vite:
         specifier: ^8.0.0
         version: 8.0.8(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.6.1)(tsx@4.21.0)
+
+  packages/database: {}
 
 packages:
 

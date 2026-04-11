@@ -1,0 +1,4 @@
+
+> @snapdish/web@ typecheck /Users/samjames/repos/personal/Snapdish/apps/web
+> tsc --noEmit
+

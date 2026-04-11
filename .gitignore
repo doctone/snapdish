@@ -18,3 +18,9 @@ yarn.lock
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+.turbo
+.pnpm-store
+.git
+.devcontainer
+

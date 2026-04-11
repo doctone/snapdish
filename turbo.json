@@ -1,21 +1,29 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "globalDependencies": [
-    ".env",
+    "apps/web/.env",
     "packages/database/supabase/config.toml",
     "packages/database/supabase/seed.sql"
   ],
   "tasks": {
-    "//#dev": {
+    "dev": {
       "cache": false,
       "persistent": true
     },
-    "//#build": {
+    "build": {
       "outputs": [
         "dist/**"
       ]
     },
-    "//#typecheck": {},
+    "typecheck": {},
+    "preview": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
     "db:start": {
       "cache": false
     },

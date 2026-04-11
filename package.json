@@ -1,42 +1,21 @@
 {
-  "name": "tanstack-start-example-supabase-basic",
+  "name": "snapdish-workspace",
   "private": true,
-  "main": "index.js",
   "type": "module",
   "packageManager": "pnpm@10.14.0",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "turbo run dev --filter=@snapdish/web",
     "turbo": "turbo",
     "db:start": "turbo run db:start --filter=@snapdish/database",
     "db:stop": "turbo run db:stop --filter=@snapdish/database",
     "db:reset": "turbo run db:reset --filter=@snapdish/database",
-    "build": "vite build && tsc --noEmit",
-    "typecheck": "tsc --noEmit",
-    "preview": "vite preview",
-    "start": "pnpx srvx --prod -s ../client dist/server/server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.48.1",
-    "@tanstack/react-router": "^1.168.12",
-    "@tanstack/react-router-devtools": "^1.166.11",
-    "@tanstack/react-start": "^1.167.19",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "redaxios": "^0.5.1"
+    "build": "turbo run build --filter=@snapdish/web",
+    "typecheck": "turbo run typecheck --filter=@snapdish/web",
+    "preview": "turbo run preview --filter=@snapdish/web",
+    "start": "turbo run start --filter=@snapdish/web"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.2",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react": "^6.0.1",
     "supabase": "^2.89.1",
-    "tailwindcss": "^4.2.2",
-    "turbo": "^2.9.6",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.0"
+    "turbo": "^2.9.6"
   }
 }

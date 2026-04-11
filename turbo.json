@@ -32,6 +32,11 @@
     },
     "db:reset": {
       "cache": false
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

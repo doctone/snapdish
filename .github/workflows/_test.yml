@@ -30,3 +30,6 @@ jobs:
       - run: pnpm run test --filter=@snapdish/web
 
       - run: pnpm run typecheck --filter=@snapdish/web
+
+  security:
+    uses: ./.github/workflows/_security.yml

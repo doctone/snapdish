@@ -32,7 +32,6 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_SARIF_REPORT_ARTIFACT_NAME: gitleaks-results-${{ github.job }}
 
   lockfile-lint:
     runs-on: ubuntu-latest

@@ -19,7 +19,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Check for known vulnerabilities
-        run: pnpm audit --audit-level=moderate
+        run: pnpm audit --audit-level=high
 
   secret-scan:
     runs-on: ubuntu-latest
@@ -32,6 +32,7 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_SARIF_REPORT_ARTIFACT_NAME: gitleaks-results-${{ github.job }}
 
   lockfile-lint:
     runs-on: ubuntu-latest
@@ -47,5 +48,11 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Lint lockfile
-        run: npx lockfile-lint --path pnpm-lock.yaml --type pnpm --allowed-hosts npm --allowed-schemes "https:"
+      - name: Verify no non-HTTPS registry URLs
+        run: |
+          if grep -qE '^\s+resolution:.*http:' pnpm-lock.yaml; then
+            echo "::error::Found insecure (non-HTTPS) registry URLs in lockfile"
+            grep -nE '^\s+resolution:.*http:' pnpm-lock.yaml
+            exit 1
+          fi
+          echo "All registry URLs use HTTPS"

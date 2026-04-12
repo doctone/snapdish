@@ -30,4 +30,6 @@ yarn.lock
 .dolt/
 *.db
 .beads-credential-key
+
 apps/web/dist
+apps/web/.turbo

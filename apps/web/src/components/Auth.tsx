@@ -10,46 +10,68 @@ export function Auth({
   afterSubmit?: React.ReactNode
 }) {
   return (
-    <div className="fixed inset-0 bg-white dark:bg-black flex items-start justify-center p-8">
-      <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold mb-4">{actionText}</h1>
+    <div className="fixed inset-0 bg-background flex items-start justify-center p-8 pt-32">
+      <div className="w-full max-w-sm flex flex-col gap-8">
+        <div className="flex flex-col gap-2">
+          <span className="material-symbols-outlined text-primary text-3xl">
+            restaurant_menu
+          </span>
+          <h1 className="text-3xl font-extrabold font-headline tracking-tight text-on-surface">
+            {actionText}
+          </h1>
+          <p className="text-sm text-on-surface-variant">
+            {actionText === 'Login'
+              ? 'Welcome back to your kitchen.'
+              : 'Start cooking smarter today.'}
+          </p>
+        </div>
         <form
           onSubmit={(e) => {
             e.preventDefault()
             onSubmit(e)
           }}
-          className="space-y-4"
+          className="flex flex-col gap-5"
         >
-          <div>
-            <label htmlFor="email" className="block text-xs">
-              Username
+          <div className="flex flex-col gap-1.5">
+            <label
+              htmlFor="email"
+              className="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant"
+            >
+              Email
             </label>
             <input
               type="email"
               name="email"
               id="email"
-              className="px-2 py-1 w-full rounded-sm border border-gray-500/20 bg-white dark:bg-gray-800"
+              className="px-3 py-2.5 w-full rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary transition-shadow"
+              placeholder="you@example.com"
             />
           </div>
-          <div>
-            <label htmlFor="password" className="block text-xs">
+          <div className="flex flex-col gap-1.5">
+            <label
+              htmlFor="password"
+              className="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant"
+            >
               Password
             </label>
             <input
               type="password"
               name="password"
               id="password"
-              className="px-2 py-1 w-full rounded-sm border border-gray-500/20 bg-white dark:bg-gray-800"
+              className="px-3 py-2.5 w-full rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary transition-shadow"
+              placeholder="••••••••"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-cyan-600 text-white rounded-sm py-2 font-black uppercase"
+            className="w-full h-12 rounded-lg bg-gradient-to-br from-primary to-primary-container text-on-primary font-body font-semibold text-base shadow-lg shadow-primary/10 hover:opacity-90 transition-all disabled:opacity-50"
             disabled={status === 'pending'}
           >
             {status === 'pending' ? '...' : actionText}
           </button>
-          {afterSubmit ? afterSubmit : null}
+          {afterSubmit ? (
+            <div className="text-sm text-error">{afterSubmit}</div>
+          ) : null}
         </form>
       </div>
     </div>

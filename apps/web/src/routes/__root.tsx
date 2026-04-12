@@ -46,13 +46,30 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       ...seo({
-        title:
-          'TanStack Start | Type-Safe, Client-First, Full-Stack React Framework',
-        description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
+        title: 'SnapDish — Turn Groceries into Gourmet',
+        description:
+          'The minimalist kitchen assistant for busy households. Scan receipts, track your pantry, discover personalized recipes.',
       }),
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: '',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600&display=swap',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
+      },
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
@@ -97,42 +114,54 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   const { user } = Route.useRouteContext()
 
   return (
-    <html>
+    <html lang="en" className="light">
       <head>
         <HeadContent />
       </head>
-      <body>
-        <div className="p-2 flex gap-2 text-lg">
-          <Link
-            to="/"
-            activeProps={{
-              className: 'font-bold',
-            }}
-            activeOptions={{ exact: true }}
-          >
-            Home
-          </Link>{' '}
-          <Link
-            to="/posts"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Posts
-          </Link>
-          <div className="ml-auto">
-            {user ? (
-              <>
-                <span className="mr-2">{user.email}</span>
-                <Link to="/logout">Logout</Link>
-              </>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
+      <body className="bg-background text-on-surface antialiased">
+        <header className="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl">
+          <nav className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <span className="material-symbols-outlined text-primary">restaurant_menu</span>
+              <span className="text-2xl font-extrabold text-primary tracking-tighter font-headline">
+                SnapDish
+              </span>
+            </Link>
+            <div className="flex items-center gap-4">
+              {user ? (
+                <>
+                  <span className="text-sm text-on-surface-variant">{user.email}</span>
+                  <Link
+                    to="/logout"
+                    className="text-sm font-semibold text-on-surface-variant hover:text-on-surface transition-colors"
+                  >
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  className="text-primary font-bold font-headline hover:opacity-80 transition-opacity"
+                >
+                  Login
+                </Link>
+              )}
+            </div>
+          </nav>
+        </header>
+        <main className="pt-20 px-6 max-w-7xl mx-auto">
+          <Outlet />
+        </main>
+        <footer className="mt-16 w-full bg-surface-container-low rounded-t-2xl">
+          <div className="flex flex-col md:flex-row justify-between items-center px-8 py-12 gap-6 max-w-7xl mx-auto">
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <span className="text-lg font-bold text-primary font-headline">SnapDish</span>
+              <p className="text-sm text-on-surface-variant text-center md:text-left">
+                &copy; 2024 SnapDish. Crafted for the Culinary Curator.
+              </p>
+            </div>
           </div>
-        </div>
-        <hr />
-        {children}
+        </footer>
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>

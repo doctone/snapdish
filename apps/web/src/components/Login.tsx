@@ -40,12 +40,12 @@ export function Login() {
       afterSubmit={
         loginMutation.data ? (
           <>
-            <div className="text-red-400">{loginMutation.data.message}</div>
+            <div className="text-error">{loginMutation.data.message}</div>
             {loginMutation.data.error &&
             loginMutation.data.message === 'Invalid login credentials' ? (
               <div>
                 <button
-                  className="text-blue-500"
+                  className="text-primary font-semibold hover:opacity-80 transition-opacity"
                   onClick={(e) => {
                     const formData = new FormData(
                       (e.target as HTMLButtonElement).form!,

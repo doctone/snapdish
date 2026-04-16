@@ -152,7 +152,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <main className="pt-20 px-6 max-w-7xl mx-auto">
           <Outlet />
         </main>
-        <footer className="mt-16 w-full bg-surface-container-low rounded-t-2xl">
+        <footer className="mt-16 w-full bg-surface-container-low rounded-t-lg">
           <div className="flex flex-col md:flex-row justify-between items-center px-8 py-12 gap-6 max-w-7xl mx-auto">
             <div className="flex flex-col items-center md:items-start gap-2">
               <span className="text-lg font-bold text-primary font-headline">SnapDish</span>

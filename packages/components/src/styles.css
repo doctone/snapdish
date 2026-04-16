@@ -1,0 +1,95 @@
+/*
+ * SnapDish Design Tokens
+ *
+ * Source palette: Material Design 3
+ * Component layer: shadcn/ui conventions
+ */
+
+@theme {
+  /* ── Shadcn semantic tokens (mapped from M3) ── */
+  --color-background: #fbfbe2;
+  --color-foreground: #1b1d0e;
+  --color-card: #ffffff;
+  --color-card-foreground: #1b1d0e;
+  --color-primary: #486730;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #d8e8c7;
+  --color-secondary-foreground: #5b694e;
+  --color-muted: #efefd7;
+  --color-muted-foreground: #43483d;
+  --color-accent: #eaead1;
+  --color-accent-foreground: #1b1d0e;
+  --color-destructive: #ba1a1a;
+  --color-border: #c4c8ba;
+  --color-input: #c4c8ba;
+  --color-ring: #486730;
+
+  /* ── M3 extended palette (for page-level layouts) ── */
+  --color-primary-container: #87a96b;
+  --color-on-primary-container: #213d0b;
+  --color-secondary-container: #d8e8c7;
+  --color-on-secondary-container: #5b694e;
+  --color-tertiary: #854c6f;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #cd8bb2;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-surface: #fbfbe2;
+  --color-on-surface: #1b1d0e;
+  --color-surface-variant: #e4e4cc;
+  --color-on-surface-variant: #43483d;
+  --color-surface-dim: #dbdcc3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f5dc;
+  --color-surface-container: #efefd7;
+  --color-surface-container-high: #eaead1;
+  --color-surface-container-highest: #e4e4cc;
+  --color-on-background: #1b1d0e;
+  --color-inverse-surface: #303221;
+  --color-inverse-on-surface: #f2f2d9;
+  --color-inverse-primary: #aed18f;
+  --color-outline: #74796c;
+  --color-outline-variant: #c4c8ba;
+
+  /* ── Typography ── */
+  --font-family-headline: 'Plus Jakarta Sans', sans-serif;
+  --font-family-body: 'Manrope', sans-serif;
+  --font-family-label: 'Manrope', sans-serif;
+
+  /* ── Radii ── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    font-family: var(--font-family-body);
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-headline);
+  }
+
+  .using-mouse * {
+    outline: none !important;
+  }
+}

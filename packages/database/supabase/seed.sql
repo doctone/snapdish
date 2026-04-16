@@ -5,6 +5,9 @@ do $$
 declare
   seed_user_id uuid := '11111111-1111-1111-1111-111111111111';
 begin
+  delete from public.receipts
+  where user_id = seed_user_id;
+
   delete from auth.identities
   where user_id = seed_user_id
      or identity_data ->> 'email' = 'sam@snapdish.com';
@@ -90,6 +93,25 @@ begin
     'sam@snapdish.com',
     now(),
     now(),
+    now()
+  );
+
+  insert into public.receipts (
+    id,
+    user_id,
+    storage_path,
+    original_filename,
+    content_type,
+    size_bytes,
+    created_at
+  )
+  values (
+    '22222222-2222-2222-2222-222222222222',
+    seed_user_id,
+    '11111111-1111-1111-1111-111111111111/2026-04-11-weekly-shop.jpg',
+    'weekly-shop.jpg',
+    'image/jpeg',
+    245678,
     now()
   );
 end $$;

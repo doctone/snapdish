@@ -1,7 +1,12 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, redirect } from '@tanstack/react-router'
 import { Button, Card, CardContent } from '@snapdish/components'
 
 export const Route = createFileRoute('/')({
+  beforeLoad: ({ context }) => {
+    if (context.user) {
+      throw redirect({ to: '/dashboard' })
+    }
+  },
   component: Home,
 })
 

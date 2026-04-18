@@ -33,11 +33,20 @@ export function useMutation<TVariables, TData, TError = Error>(opts: {
     [opts.fn],
   )
 
+  const reset = React.useCallback(() => {
+    setStatus('idle')
+    setSubmittedAt(undefined)
+    setVariables(undefined)
+    setError(undefined)
+    setData(undefined)
+  }, [])
+
   return {
     status,
     variables,
     submittedAt,
     mutate,
+    reset,
     error,
     data,
   }

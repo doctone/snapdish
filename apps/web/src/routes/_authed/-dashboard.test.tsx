@@ -5,6 +5,33 @@ import { Dashboard } from './dashboard'
 
 let mockIsDragActive = false
 
+vi.mock('../../hooks/useMutation', () => ({
+  useMutation: () => ({
+    mutate: vi.fn(),
+    reset: vi.fn(),
+    status: 'idle',
+    error: undefined,
+    data: undefined,
+    variables: undefined,
+    submittedAt: undefined,
+  }),
+}))
+
+vi.mock('../../utils/upload-receipt', () => ({
+  uploadReceipt: vi.fn(),
+}))
+
+vi.mock('../../utils/validate-receipt-file', () => ({
+  validateReceiptFile: () => ({ valid: true }),
+  ALLOWED_TYPES: new Set([
+    'image/jpeg',
+    'image/png',
+    'image/webp',
+    'application/pdf',
+  ]),
+  MAX_SIZE_BYTES: 10 * 1024 * 1024,
+}))
+
 vi.mock('react-dropzone', () => ({
   useDropzone: (opts: Record<string, unknown>) => ({
     getRootProps: () => ({
@@ -21,6 +48,10 @@ vi.mock('react-dropzone', () => ({
     get isDragActive() {
       return mockIsDragActive
     },
+    isDragReject: false,
+    isDragAccept: true,
+    acceptedFiles: [],
+    fileRejections: [],
     open: vi.fn(),
   }),
 }))
@@ -46,7 +77,8 @@ describe('Dashboard', () => {
       'input[type="file"]',
     ) as HTMLInputElement
     expect(fileInput).toBeTruthy()
-    expect(fileInput.accept).toContain('image')
+    expect(fileInput.accept).toContain('image/jpeg')
+    expect(fileInput.accept).toContain('application/pdf')
   })
 
   it('shows drop prompt when dragging a file over the dropzone', async () => {

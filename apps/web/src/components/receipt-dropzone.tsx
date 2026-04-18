@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useDropzone } from 'react-dropzone'
+import { useRouter } from '@tanstack/react-router'
 import { useMutation } from '../hooks/useMutation'
 import { uploadReceipt } from '../utils/upload-receipt'
 import { validateReceiptFile } from '../utils/validate-receipt-file'
@@ -15,15 +16,16 @@ async function submitReceipt(file: File): Promise<UploadResult> {
 }
 
 export function ReceiptDropzone() {
+  const router = useRouter()
   const [validationError, setValidationError] = React.useState<string | null>(
     null,
   )
-  const [uploadedFiles, setUploadedFiles] = React.useState<string[]>([])
 
   const mutation = useMutation({
     fn: submitReceipt,
     onSuccess: () => {
       setValidationError(null)
+      router.invalidate()
     },
   })
 
@@ -95,10 +97,7 @@ export function ReceiptDropzone() {
         </p>
         <button
           type="button"
-          onClick={() => {
-            setUploadedFiles((prev) => [...prev, filename])
-            mutation.reset()
-          }}
+          onClick={() => mutation.reset()}
           className="text-sm text-primary underline"
         >
           Upload another
@@ -141,15 +140,6 @@ export function ReceiptDropzone() {
             : 'Upload receipt'}
         </p>
       </div>
-      {uploadedFiles.length > 0 && (
-        <ul aria-label="Uploaded files" className="mt-4 space-y-1 text-sm text-on-surface-variant">
-          {uploadedFiles.map((filename) => (
-            <li key={filename} aria-label={filename}>
-              {filename}
-            </li>
-          ))}
-        </ul>
-      )}
     </>
   )
 }

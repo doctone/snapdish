@@ -158,7 +158,7 @@ it('shows upload another button after success', async () => {
     ).toBeInTheDocument()
   })
 
-  it('displays uploaded files underneath the dropzone after upload', async () => {
+  it('resets the dropzone when clicking upload another', async () => {
     mockStatus = 'success'
     mockData = { receipt: { original_filename: 'grocery.jpg' } }
 
@@ -177,13 +177,6 @@ it('shows upload another button after success', async () => {
       name: /upload receipt/i,
     })
     expect(dropzone).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('list', { name: /uploaded files/i }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('listitem', { name: /grocery\.jpg/i }),
-    ).toBeInTheDocument()
   })
 
 })

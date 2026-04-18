@@ -21,6 +21,11 @@ vi.mock('../../utils/upload-receipt', () => ({
   uploadReceipt: vi.fn(),
 }))
 
+vi.mock('../../utils/fetch-receipts', () => ({
+  fetchReceipts: vi.fn(() => ({ receipts: [] }),
+  ),
+}))
+
 vi.mock('../../utils/validate-receipt-file', () => ({
   validateReceiptFile: () => ({ valid: true }),
   ALLOWED_TYPES: new Set([

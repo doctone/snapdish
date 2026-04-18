@@ -21,6 +21,7 @@
     "@tanstack/react-router": "^1.168.12",
     "@tanstack/react-router-devtools": "^1.166.11",
     "@tanstack/react-start": "^1.167.19",
+    "@tanstack/react-table": "^8.21.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-dropzone": "^15.0.0",
